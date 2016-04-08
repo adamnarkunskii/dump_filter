@@ -61,7 +61,7 @@ def main_loop(in_file, out_file, prologue):
             label = m.group(2)
             if label in interesting_labels:
                 printing = True
-                location_shifted = hex(int(m.group(1), 16) / 4)[2:]
+                location_shifted = hex((int(m.group(1), 16) - 0xe000) / 4)[2:]
                 line = "@%s\n" % location_shifted
                 if label == "_start":
                     nop_countdown = 4
